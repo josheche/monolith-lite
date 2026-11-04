@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-canvas: #fafaf9;
+  --color-ink: #202321;
+  --color-muted: #5c625e;
+  --color-line: #dfe3df;
+  --color-accent: #256047;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+  }
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-6 pt-8 sm:px-10;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold tracking-widest text-accent uppercase;
+  }
+  .badge {
+    @apply rounded-full border border-line px-3 py-1 text-xs text-muted;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-white p-7;
+  }
+  .button {
+    @apply inline-flex min-h-11 items-center justify-center gap-4 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white;
+  }
+  .button:hover {
+    filter: brightness(0.93);
+  }
+  .button-secondary {
+    @apply border border-line bg-white text-ink;
+  }
+  .button:disabled {
+    @apply cursor-not-allowed opacity-40;
+  }
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply fixed top-4 left-4 z-50 rounded bg-ink p-3 text-white not-sr-only;
+  }
+}
